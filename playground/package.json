@@ -1,0 +1,14 @@
+{
+    "private": true,
+    "name": "feedback-control.bs.js-playground",
+    "type": "module",
+    "scripts": {
+        "dev": "nuxi dev",
+        "build": "nuxi build",
+        "generate": "nuxi generate"
+    },
+    "dependencies": {
+        "@nuxt/ui": "^3.1.0",
+        "nuxt": "^3.15.4"
+    }
+}
