@@ -1,4 +1,16 @@
 # Changelog
+## v0.0.5
+
+[compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.4...v0.0.5)
+
+### 🩹 Fixes
+
+- Adjust button width and add nowrap to rating label ([6b4c7aa](https://github.com/DCC-BS/feedback-control.bs.js/commit/6b4c7aa))
+
+### ❤️ Contributors
+
+- Tobias Bollinger <tobias.bollinger@bs.ch>
+
 ## v0.0.4
 
 [compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.3...v0.0.4)
