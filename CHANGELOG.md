@@ -1,4 +1,20 @@
 # Changelog
+## v0.0.3
+
+[compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.2...v0.0.3)
+
+### 🚀 Enhancements
+
+- Add email input to feedback form and include in submission ([35593ce](https://github.com/DCC-BS/feedback-control.bs.js/commit/35593ce))
+
+### 🏡 Chore
+
+- **release:** V0.0.2 ([54fa69d](https://github.com/DCC-BS/feedback-control.bs.js/commit/54fa69d))
+
+### ❤️ Contributors
+
+- Tobias Bollinger <tobias.bollinger@bs.ch>
+
 ## v0.0.2
 
 [compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.1...v0.0.2)
