@@ -11,6 +11,7 @@ import { ref } from "vue";
 
 const feedbackText = ref("");
 const selectedRating = ref("");
+const emailAddress = ref("");
 const isSubmitting = ref(false);
 const isSubmitted = ref(false);
 
@@ -32,6 +33,7 @@ const submitFeedback = async () => {
         body: {
             rating: selectedRating.value,
             message: feedbackText.value,
+            email: emailAddress.value || undefined,
         },
         headers: {
             "Content-Type": "application/json",
@@ -45,6 +47,7 @@ const submitFeedback = async () => {
     setTimeout(() => {
         feedbackText.value = "";
         selectedRating.value = "";
+        emailAddress.value = "";
         isSubmitted.value = false;
     }, 3000);
 };
@@ -52,6 +55,7 @@ const submitFeedback = async () => {
 const resetForm = () => {
     feedbackText.value = "";
     selectedRating.value = "";
+    emailAddress.value = "";
     isSubmitted.value = false;
 };
 </script>
@@ -95,6 +99,19 @@ const resetForm = () => {
                             <textarea id="feedback-text" v-model="feedbackText"
                                 placeholder="Dein Feedback hilft uns, besser zu werden..."></textarea>
                         </div>
+                        
+                        <div class="feedback-input-group">
+                            <label for="feedback-email">E-Mail (optional)</label>
+                            <input 
+                                type="email"
+                                id="feedback-email"
+                                v-model="emailAddress"
+                                placeholder="deine@email.de"
+                                class="feedback-email-input"
+                            />
+                            <small class="feedback-input-help">Damit wir dich erreichen können.</small>
+                        </div>
+                        
                         <button class="feedback-submit" @click="submitFeedback" :disabled="isSubmitting">
                             <template v-if="isSubmitting">
                                 <svg class="spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -292,14 +309,34 @@ const resetForm = () => {
     color: var(--feedback-text);
 }
 
+.feedback-email-input {
+    border: 1px solid var(--feedback-border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    background-color: var(--feedback-bg);
+    color: var(--feedback-text);
+}
+
+.feedback-email-input:focus,
 .feedback-container textarea:focus {
     border-color: var(--feedback-primary);
     outline: none;
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
-.feedback-container textarea::placeholder {
+.feedback-container textarea::placeholder,
+.feedback-email-input::placeholder {
     color: #9ca3af;
+}
+
+.feedback-input-help {
+    font-size: 0.75rem;
+    color: var(--feedback-text-secondary);
+    margin-top: 4px;
+    display: inline-block;
 }
 
 .feedback-submit {

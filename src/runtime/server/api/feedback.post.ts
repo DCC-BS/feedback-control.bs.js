@@ -4,7 +4,7 @@ import { useRuntimeConfig } from "#internal/nitro";
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
-    const { message, rating } = body;
+    const { message, rating, email } = body;
     const config = useRuntimeConfig();
 
     const moduleConfig = config["feedback-control.bs.js"] as {
@@ -17,7 +17,13 @@ export default defineEventHandler(async (event) => {
     const repo = moduleConfig.repo;
     const owner = moduleConfig.owner;
     const project = moduleConfig.project;
-    const messageWithRating = `Rating: ${rating}\n\n${message}`;
+    
+    let messageWithDetails = `Rating: ${rating}\n\n${message}`;
+    
+    // Add email to the issue body if provided
+    if (email) {
+        messageWithDetails += `\n\nContact Email: ${email}`;
+    }
 
     const title = `${project} - ${message.substring(0, 20)}`;
 
@@ -29,7 +35,7 @@ export default defineEventHandler(async (event) => {
         },
         body: {
             title: title,
-            body: messageWithRating,
+            body: messageWithDetails,
             labels: [project, "feedback"],
         },
     });
