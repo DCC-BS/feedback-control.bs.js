@@ -17,9 +17,9 @@ export default defineEventHandler(async (event) => {
     const repo = moduleConfig.repo;
     const owner = moduleConfig.owner;
     const project = moduleConfig.project;
-    
+
     let messageWithDetails = `Rating: ${rating}\n\n${message}`;
-    
+
     // Add email to the issue body if provided
     if (email) {
         messageWithDetails += `\n\nContact Email: ${email}`;
