@@ -1,4 +1,16 @@
 # Changelog
+## v0.0.4
+
+[compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.3...v0.0.4)
+
+### 🏡 Chore
+
+- Remove unnecessary blank lines in feedback.post.ts ([743f832](https://github.com/DCC-BS/feedback-control.bs.js/commit/743f832))
+
+### ❤️ Contributors
+
+- Tobias Bollinger <tobias.bollinger@bs.ch>
+
 ## v0.0.3
 
 [compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.2...v0.0.3)
