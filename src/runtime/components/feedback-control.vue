@@ -212,7 +212,7 @@ const resetForm = () => {
     border-radius: 12px;
     box-shadow: 0 10px 25px var(--feedback-shadow);
     border: none;
-    width: 350px;
+    width: 360px;
     animation: popup 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     color: var(--feedback-text);
 }
@@ -281,6 +281,7 @@ const resetForm = () => {
 
 .rating-label {
     font-size: 0.75rem;
+    text-wrap-mode: nowrap;
     color: var(--feedback-text-secondary);
 }
 
