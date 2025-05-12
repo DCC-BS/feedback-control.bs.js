@@ -1,7 +1,6 @@
 import {
     addComponentsDir,
     addServerHandler,
-    addServerScanDir,
     createResolver,
     defineNuxtModule,
 } from "@nuxt/kit";
