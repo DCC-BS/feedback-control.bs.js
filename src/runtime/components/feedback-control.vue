@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import {
-    PopoverArrow,
     PopoverClose,
     PopoverContent,
     PopoverPortal,
@@ -11,6 +10,7 @@ import { ref } from "vue";
 
 const feedbackText = ref("");
 const selectedRating = ref("");
+const emailAddress = ref("");
 const isSubmitting = ref(false);
 const isSubmitted = ref(false);
 const errorMessage = ref("");
@@ -60,6 +60,7 @@ const submitFeedback = async () => {
 const resetForm = () => {
     feedbackText.value = "";
     selectedRating.value = "";
+    emailAddress.value = "";
     isSubmitted.value = false;
     errorMessage.value = "";
 };
@@ -104,39 +105,46 @@ const resetForm = () => {
                             <textarea id="feedback-text" v-model="feedbackText"
                                 placeholder="Dein Feedback hilft uns, besser zu werden..."></textarea>
                         </div>
-                        
+
                         <div v-if="errorMessage" class="feedback-error">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
-                                <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2" />
+                                <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2" />
                             </svg>
                             <span>{{ errorMessage }}</span>
-                        </div>
-                        
-                        <button class="feedback-submit" @click="submitFeedback" :disabled="isSubmitting">
-                            <template v-if="isSubmitting">
-                                <svg class="spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke-width="4" stroke="currentColor"
-                                        stroke-dasharray="30 60" />
-                                </svg>
-                                <span>Wird gesendet...</span>
-                            </template>
-                            <template v-else>
-                                <span>Feedback senden</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </template>
-                        </button>
-                    </div>
+                            <div class="feedback-input-group">
+                                <label for="feedback-email">E-Mail (optional)</label>
+                                <input type="email" id="feedback-email" v-model="emailAddress"
+                                    placeholder="deine@email.de" class="feedback-email-input" />
+                                <small class="feedback-input-help">Damit wir dich erreichen können.</small>
+                            </div>
 
-                    <div v-else class="feedback-success">
-                        <div class="success-icon">✓</div>
-                        <h3>Vielen Dank für dein Feedback!</h3>
-                        <p>Wir schätzen deine Eingabe und werden sie nutzen, um unseren Service zu verbessern.</p>
+                            <button class="feedback-submit" @click="submitFeedback" :disabled="isSubmitting">
+                                <template v-if="isSubmitting">
+                                    <svg class="spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke-width="4" stroke="currentColor"
+                                            stroke-dasharray="30 60" />
+                                    </svg>
+                                    <span>Wird gesendet...</span>
+                                </template>
+                                <template v-else>
+                                    <span>Feedback senden</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </template>
+                            </button>
+                        </div>
+
+                        <div v-else class="feedback-success">
+                            <div class="success-icon">✓</div>
+                            <h3>Vielen Dank für dein Feedback!</h3>
+                            <p>Wir schätzen deine Eingabe und werden sie nutzen, um unseren Service zu verbessern.</p>
+                        </div>
                     </div>
 
                 </PopoverContent>
@@ -216,7 +224,7 @@ const resetForm = () => {
     border-radius: 12px;
     box-shadow: 0 10px 25px var(--feedback-shadow);
     border: none;
-    width: 350px;
+    width: 360px;
     animation: popup 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     color: var(--feedback-text);
 }
@@ -285,6 +293,7 @@ const resetForm = () => {
 
 .rating-label {
     font-size: 0.75rem;
+    text-wrap-mode: nowrap;
     color: var(--feedback-text-secondary);
 }
 
@@ -313,14 +322,34 @@ const resetForm = () => {
     color: var(--feedback-text);
 }
 
+.feedback-email-input {
+    border: 1px solid var(--feedback-border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    background-color: var(--feedback-bg);
+    color: var(--feedback-text);
+}
+
+.feedback-email-input:focus,
 .feedback-container textarea:focus {
     border-color: var(--feedback-primary);
     outline: none;
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
-.feedback-container textarea::placeholder {
+.feedback-container textarea::placeholder,
+.feedback-email-input::placeholder {
     color: #9ca3af;
+}
+
+.feedback-input-help {
+    font-size: 0.75rem;
+    color: var(--feedback-text-secondary);
+    margin-top: 4px;
+    display: inline-block;
 }
 
 .feedback-submit {
@@ -371,9 +400,19 @@ const resetForm = () => {
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-4px); }
-    75% { transform: translateX(4px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    75% {
+        transform: translateX(4px);
+    }
 }
 
 .spinner {

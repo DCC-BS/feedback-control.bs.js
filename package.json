@@ -8,13 +8,10 @@
     },
     "exports": {
         ".": {
-            "types": "./dist/types.d.ts",
-            "import": "./dist/module.mjs",
-            "require": "./dist/module.cjs"
+            "import": "./dist/module.mjs"
         }
     },
-    "main": "./dist/module.cjs",
-    "types": "./dist/types.d.ts",
+    "main": "./dist/module.mjs",
     "files": [
         "dist"
     ],
@@ -38,7 +35,7 @@
     "devDependencies": {
         "@biomejs/biome": "latest",
         "@nuxt/devtools": "^2.0.0",
-        "@nuxt/module-builder": "^0.8.4",
+        "@nuxt/module-builder": "^1.0.0",
         "@nuxt/schema": "^3.15.4",
         "@nuxt/test-utils": "^3.15.4",
         "@types/node": "latest",
@@ -52,5 +49,5 @@
         "happy-dom": "^17.1.1",
         "vitest-environment-nuxt": "^1.0.1"
     },
-    "version": "0.0.2"
+    "version": "0.1.0"
 }

@@ -1,4 +1,44 @@
 # Changelog
+## v0.0.5
+
+[compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.4...v0.0.5)
+
+### 🩹 Fixes
+
+- Adjust button width and add nowrap to rating label ([6b4c7aa](https://github.com/DCC-BS/feedback-control.bs.js/commit/6b4c7aa))
+
+### ❤️ Contributors
+
+- Tobias Bollinger <tobias.bollinger@bs.ch>
+
+## v0.0.4
+
+[compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.3...v0.0.4)
+
+### 🏡 Chore
+
+- Remove unnecessary blank lines in feedback.post.ts ([743f832](https://github.com/DCC-BS/feedback-control.bs.js/commit/743f832))
+
+### ❤️ Contributors
+
+- Tobias Bollinger <tobias.bollinger@bs.ch>
+
+## v0.0.3
+
+[compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.2...v0.0.3)
+
+### 🚀 Enhancements
+
+- Add email input to feedback form and include in submission ([35593ce](https://github.com/DCC-BS/feedback-control.bs.js/commit/35593ce))
+
+### 🏡 Chore
+
+- **release:** V0.0.2 ([54fa69d](https://github.com/DCC-BS/feedback-control.bs.js/commit/54fa69d))
+
+### ❤️ Contributors
+
+- Tobias Bollinger <tobias.bollinger@bs.ch>
+
 ## v0.0.2
 
 [compare changes](https://github.com/DCC-BS/feedback-control.bs.js/compare/v0.0.1...v0.0.2)
