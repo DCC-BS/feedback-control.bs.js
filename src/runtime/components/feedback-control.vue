@@ -13,6 +13,7 @@ const feedbackText = ref("");
 const selectedRating = ref("");
 const isSubmitting = ref(false);
 const isSubmitted = ref(false);
+const errorMessage = ref("");
 
 const ratings = [
     { emoji: "😕", label: "Schlecht", value: "poor" },
@@ -26,33 +27,41 @@ const submitFeedback = async () => {
     if (!selectedRating.value && !feedbackText.value) return;
 
     isSubmitting.value = true;
+    errorMessage.value = "";
 
-    await $fetch("/api/feedback", {
-        method: "POST",
-        body: {
-            rating: selectedRating.value,
-            message: feedbackText.value,
-        },
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
+    try {
+        await $fetch("/api/feedback", {
+            method: "POST",
+            body: {
+                rating: selectedRating.value,
+                message: feedbackText.value,
+            },
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
 
-    isSubmitting.value = false;
-    isSubmitted.value = true;
+        isSubmitting.value = false;
+        isSubmitted.value = true;
 
-    // Reset after a few seconds
-    setTimeout(() => {
-        feedbackText.value = "";
-        selectedRating.value = "";
-        isSubmitted.value = false;
-    }, 3000);
+        // Reset after a few seconds
+        setTimeout(() => {
+            feedbackText.value = "";
+            selectedRating.value = "";
+            isSubmitted.value = false;
+        }, 3000);
+    } catch (error) {
+        isSubmitting.value = false;
+        errorMessage.value = "Feedback konnte nicht gesendet werden. Bitte versuche es später erneut.";
+        console.error("Failed to submit feedback:", error);
+    }
 };
 
 const resetForm = () => {
     feedbackText.value = "";
     selectedRating.value = "";
     isSubmitted.value = false;
+    errorMessage.value = "";
 };
 </script>
 
@@ -95,6 +104,16 @@ const resetForm = () => {
                             <textarea id="feedback-text" v-model="feedbackText"
                                 placeholder="Dein Feedback hilft uns, besser zu werden..."></textarea>
                         </div>
+                        
+                        <div v-if="errorMessage" class="feedback-error">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                                <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>{{ errorMessage }}</span>
+                        </div>
+                        
                         <button class="feedback-submit" @click="submitFeedback" :disabled="isSubmitting">
                             <template v-if="isSubmitting">
                                 <svg class="spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -136,6 +155,7 @@ const resetForm = () => {
     --feedback-primary-hover: #2563eb;
     --feedback-shadow: rgba(0, 0, 0, 0.15);
     --feedback-success: #10b981;
+    --feedback-error: #ef4444;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -148,6 +168,7 @@ const resetForm = () => {
         --feedback-primary-hover: #60a5fa;
         --feedback-shadow: rgba(0, 0, 0, 0.4);
         --feedback-success: #34d399;
+        --feedback-error: #f87171;
     }
 }
 
@@ -330,6 +351,29 @@ const resetForm = () => {
 .feedback-submit:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+}
+
+.feedback-error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--feedback-error);
+    border-radius: 6px;
+    color: var(--feedback-error);
+    font-size: 0.875rem;
+    animation: shake 0.5s ease-in-out;
+}
+
+.feedback-error svg {
+    flex-shrink: 0;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
 }
 
 .spinner {

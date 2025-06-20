@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
 
     const title = `${project} - ${message.substring(0, 20)}`;
 
-    $fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
+    await $fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${moduleConfig.githubToken}`,
