@@ -1,5 +1,6 @@
 import { defineEventHandler, readBody } from "h3";
 import { $fetch } from "ofetch";
+import { EnvHttpProxyAgent } from 'undici';
 import { useRuntimeConfig } from "#internal/nitro";
 
 export default defineEventHandler(async (event) => {
@@ -29,12 +30,15 @@ export default defineEventHandler(async (event) => {
 
     const title = `${project} - ${message.substring(0, 20)}`;
 
+    const agent = new EnvHttpProxyAgent();
+
     await $fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${githubToken}`,
             "X-GitHub-Api-Version": "2022-11-28",
         },
+        dispatcher: agent,
         body: {
             title: title,
             body: messageWithDetails,
