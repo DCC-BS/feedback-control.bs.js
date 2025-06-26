@@ -4,6 +4,8 @@ export default defineNuxtConfig({
         repo: "Feedback",
         owner: "DCC-BS",
         project: "feedback-control.bs.js",
+    },
+    runtimeConfig: {
         githubToken: process.env.GITHUB_TOKEN,
     },
     devtools: { enabled: true },

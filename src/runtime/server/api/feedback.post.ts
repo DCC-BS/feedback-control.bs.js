@@ -14,6 +14,8 @@ export default defineEventHandler(async (event) => {
         githubToken: string;
     };
 
+    const githubToken = config.githubToken || moduleConfig.githubToken;
+
     const repo = moduleConfig.repo;
     const owner = moduleConfig.owner;
     const project = moduleConfig.project;
@@ -30,7 +32,7 @@ export default defineEventHandler(async (event) => {
     await $fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
         method: "POST",
         headers: {
-            Authorization: `Bearer ${moduleConfig.githubToken}`,
+            Authorization: `Bearer ${githubToken}`,
             "X-GitHub-Api-Version": "2022-11-28",
         },
         body: {
