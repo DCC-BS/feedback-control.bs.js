@@ -7,19 +7,11 @@
 Control for feedback in the DCC-BS ecosystem.
 
 ## Quick Setup
-
-To install the module create a `.npmrc` next to your `package.json` file:
-
-```txt
-//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
-@dcc-bs:registry=https://npm.pkg.github.com
+Install the module to your Nuxt application with:
+```sh
+bun add git+https://github.com/DCC-BS/feedback-control.bs.js.git#v1.1.0
 ```
-
-Create a github [personal access token (classic)](https://github.com/settings/tokens/new) with `read:packages` permissions and add it to your `.env` file:
-
-```txt
-GITHUB_TOKEN='YOUR_TOKEN'
-```
+replace `v1.1.0` with the latest version tag: ![GitHub package.json version](https://img.shields.io/github/package-json/v/DCC-BS/feedback-control.bs.js)
 
 Install the module to your Nuxt application with:
 

@@ -8,9 +8,17 @@ import {
 } from "reka-ui";
 import { ref } from "vue";
 
+interface InputProps {
+    defaultMail?: string;
+}
+
+const props = withDefaults(defineProps<InputProps>(), {
+    defaultMail: "",
+});
+
 const feedbackText = ref("");
 const selectedRating = ref("");
-const emailAddress = ref("");
+const emailAddress = ref(props.defaultMail);
 const isSubmitting = ref(false);
 const isSubmitted = ref(false);
 const errorMessage = ref("");
