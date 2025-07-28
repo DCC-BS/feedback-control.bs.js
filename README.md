@@ -51,6 +51,16 @@ Add the control to the app.vue
 </template>
 ```
 
+optionally you can pass a default email address to the control:
+```html
+<template>
+  <div>
+    <FeedbackControl default-mail="some-mail@bs.ch"/>
+    <NuxtPage />
+  </div>
+</template>
+```
+
 ## Release a new Version
 Commit your changes and then:
 ```sh
