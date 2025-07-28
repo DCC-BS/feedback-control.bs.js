@@ -46,9 +46,9 @@
         "publish-to-git": "^1.2.0",
         "typescript": "~5.8.0",
         "vitest": "^3.0.6",
-        "vue-tsc": "^2.2.0",
-        "happy-dom": "^17.1.1",
+        "vue-tsc": "^3.0.0",
+        "happy-dom": "^18.0.0",
         "vitest-environment-nuxt": "^1.0.1"
     },
-    "version": "0.1.2"
+    "version": "0.1.3"
 }
