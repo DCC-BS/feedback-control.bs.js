@@ -122,7 +122,7 @@ const resetForm = () => {
                         </div>
 
                         <div class="feedback-input-group">
-                            <label for="feedback-email">E-Mail (optional)</label>
+                            <label for="feedback-email">E-Mail</label>
                             <input type="email" id="feedback-email" v-model="emailAddress" placeholder="deine@email.de"
                                 class="feedback-email-input" />
                             <small class="feedback-input-help">Damit wir dich erreichen können.</small>
