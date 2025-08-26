@@ -34,10 +34,9 @@ const ratings = [
 const submitFeedback = async () => {
     // Clear any previous error
     errorMessage.value = "";
-    
-    // Validate that at least one field is filled
-    if (!selectedRating.value && !feedbackText.value.trim()) {
-        errorMessage.value = "Bitte wähle eine Bewertung oder gib einen Kommentar ein.";
+
+    if (!feedbackText.value.trim() || !emailAddress.value.trim()) {
+        errorMessage.value = "Bitte Textfeld und Mailadresse ausfüllen.";
         return;
     }
 

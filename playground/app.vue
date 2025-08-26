@@ -2,5 +2,5 @@
 </script>
 
 <template>
-    <FeedbackControl default-mail="deine@email.de"/>
+    <FeedbackControl />
 </template>
