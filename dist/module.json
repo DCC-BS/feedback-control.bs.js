@@ -1,0 +1,9 @@
+{
+  "name": "feedback-control.bs.js",
+  "configKey": "feedback-control.bs.js",
+  "version": "0.1.5",
+  "builder": {
+    "@nuxt/module-builder": "1.0.2",
+    "unbuild": "3.6.0"
+  }
+}
