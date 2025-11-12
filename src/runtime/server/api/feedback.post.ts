@@ -1,6 +1,6 @@
 import { defineEventHandler, readBody } from "h3";
 import { $fetch } from "ofetch";
-import { EnvHttpProxyAgent } from 'undici';
+import { EnvHttpProxyAgent } from "undici";
 import { useRuntimeConfig } from "#internal/nitro";
 
 export default defineEventHandler(async (event) => {

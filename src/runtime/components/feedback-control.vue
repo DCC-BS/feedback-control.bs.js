@@ -67,7 +67,8 @@ const submitFeedback = async () => {
         }, 3000);
     } catch (error) {
         isSubmitting.value = false;
-        errorMessage.value = "Feedback konnte nicht gesendet werden. Bitte versuche es später erneut.";
+        errorMessage.value =
+            "Feedback konnte nicht gesendet werden. Bitte versuche es später erneut.";
         console.error("Failed to submit feedback:", error);
     }
 };
