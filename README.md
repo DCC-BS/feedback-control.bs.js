@@ -1,5 +1,8 @@
 # feedback-control.bs.js
 
+> [!IMPORTANT]
+> This project is deprecated use [Feedback Control Nuxt-Layers](https://github.com/DCC-BS/nuxt-layers/tree/main/feedback-control) instead.
+
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/DCC-BS/feedback-control.bs.js)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/DCC-BS/feedback-control.bs.js/publish.yml)
 [![codecov](https://codecov.io/gh/DCC-BS/feedback-control.bs.js/graph/badge.svg?token=3PBNL8OR24)](https://codecov.io/gh/DCC-BS/feedback-control.bs.js)
